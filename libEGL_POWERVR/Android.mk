@@ -1,4 +1,7 @@
 LOCAL_PATH := $(call my-dir)
+
+ifneq ($(BOARD_USES_PROPRIETARY_EGL_SHIM),true)
+
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := egl.c
@@ -12,3 +15,5 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/egl
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
+endif
