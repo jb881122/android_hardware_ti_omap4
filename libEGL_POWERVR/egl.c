@@ -37,6 +37,7 @@ EGLBoolean eglGetConfigs(EGLDisplay dpy, EGLConfig *configs, EGLint config_size,
 
 EGLBoolean eglChooseConfig(EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config)
 {
+#ifndef NO_EGLCHOOSECONFIG_WORKAROUND
 	/* We have two issues to work around here.
 	 *
 	 * The first is about EGL_RECORDABLE_ANDROID:
@@ -121,6 +122,7 @@ EGLBoolean eglChooseConfig(EGLDisplay dpy, const EGLint *attrib_list, EGLConfig 
 		return IMGeglChooseConfig(dpy, override_attrib_list, configs, config_size, num_config);
 	}
 
+#endif
 	return IMGeglChooseConfig(dpy, attrib_list, configs, config_size, num_config);
 }
 
